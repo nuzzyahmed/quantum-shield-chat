@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum-Safe Chat</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="/static/oqs.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .landing-container {
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .landing-info {
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(66, 133, 244, 0.1), rgba(52, 168, 83, 0.1));
+    }
+    
+    .landing-auth {
+      width: 400px;
+      background: white;
+      padding: 60px 40px;
+      border-left: 1px solid #f1f1f1;
+    }
+    
+    .quantum-icon {
+      font-size: 72px;
+      color: #4285f4;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    h1 {
+      font-size: 42px;
+      margin: 0 0 20px 0;
+      color: #333;
+    }
+    
+    .landing-info p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .feature i {
+      font-size: 24px;
+      color: #4285f4;
+      margin-right: 15px;
+      width: 30px;
+      text-align: center;
+    }
+    
+    .feature span {
+      font-size: 16px;
+      color: #333;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      color: #757575;
+    }
+    
+    .auth-tab.active {
+      color: #4285f4;
+    }
+    
+    .auth-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #4285f4;
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #4285f4;
+    }
+    
+    button {
+      width: 100%;
+      background: #4285f4;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background: #2a75f3;
+    }
+    
+    #status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #f44336;
+      text-align: center;
+    }
+    
+    @media (max-width: 992px) {
+      .landing-container {
+        flex-direction: column;
+      }
+      
+      .landing-info {
+        padding: 40px;
+      }
+      
+      .landing-auth {
+        width: 100%;
+        padding: 40px;
+        border-left: none;
+        border-top: 1px solid #f1f1f1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-container">
+    <div class="landing-info">
+      <div class="quantum-icon">
+        <i class="fas fa-lock"></i>
+      </div>
+      <h1>Quantum-Safe Chat</h1>
+      <p>Experience the next generation of secure messaging with post-quantum cryptography. Our platform uses Kyber-768 encryption algorithms to ensure your messages remain private, even against quantum computer attacks.</p>
+      
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Post-quantum encryption protects against future threats</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-comment-dots"></i>
+          <span>Real-time messaging with end-to-end encryption</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-user-shield"></i>
+          <span>Your messages are never stored unencrypted on our servers</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-globe"></i>
+          <span>Connect with users worldwide with quantum-safe security</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="landing-auth">
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="login-tab">Login</div>
+        <div class="auth-tab" id="signup-tab">Sign Up</div>
+      </div>
+      
+      <div class="auth-form active" id="login-form-container">
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      
+      <div class="auth-form" id="signup-form-container">
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-confirm">Confirm Password</label>
+            <input type="password" id="signup-confirm" required>
+          </div>
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
+      
+      <div id="status"></div>
+    </div>
+  </div>
+
+  <script src="/static/index.js"></script>
+</body>
+</html>
